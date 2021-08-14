@@ -12,7 +12,7 @@ def main():
     rospy.init_node("pose_groupstate_example")
     robot = moveit_commander.RobotCommander()
     arm = moveit_commander.MoveGroupCommander("arm")
-    arm.set_max_velocity_scaling_factor(0.1)
+    arm.set_max_velocity_scaling_factor(1.0)
     arm.set_max_acceleration_scaling_factor(1.0)
     gripper = moveit_commander.MoveGroupCommander("gripper")
 
@@ -60,23 +60,13 @@ def main():
     arm.go()				
     """
 
-    target_pose = geometry_msgs.msg.Pose()
-    target_pose.position.x = 0.1
-    target_pose.position.y = 0.1
-    target_pose.position.z = 0.1
-    q = quaternion_from_euler(0.0, 0.0, 3.14/4.0)  # 上方から掴みに行く場合
-    target_pose.orientation.x = q[0]
-    target_pose.orientation.y = q[1]
-    target_pose.orientation.z = q[2]
-    target_pose.orientation.w = q[3]
-    arm.set_pose_target(target_pose)  # 目標ポーズ設定
-    arm.go()  # 実行
+    
 
     target_pose = geometry_msgs.msg.Pose()
-    target_pose.position.x = 0.21
-    target_pose.position.y = 0.2
+    target_pose.position.x = 0.15
+    target_pose.position.y = 0.15
     target_pose.position.z = 0.2
-    q = quaternion_from_euler(0.0, 0.0, 3.14/4.0)  # 上方から掴みに行く場合
+    q = quaternion_from_euler(-3.14/2, 0.0, 0.0)  # 上方から掴みに行く場合
     target_pose.orientation.x = q[0]
     target_pose.orientation.y = q[1]
     target_pose.orientation.z = q[2]
@@ -86,9 +76,26 @@ def main():
 
     target_pose = geometry_msgs.msg.Pose()
     target_pose.position.x = 0.2
-    target_pose.position.y = -0.1
-    target_pose.position.z = 0.2
-    q = quaternion_from_euler(0.0, 0.0, 3.14/4.0)  # 上方から掴みに行く場合
+    target_pose.position.y = 0.2
+    target_pose.position.z = 0.3
+    q = quaternion_from_euler(-3.14/2, 0.0, 0.0)  # 上方から掴みに行く場合
+    target_pose.orientation.x = q[0]
+    target_pose.orientation.y = q[1]
+    target_pose.orientation.z = q[2]
+    target_pose.orientation.w = q[3]
+    arm.set_pose_target(target_pose)  # 目標ポーズ設定
+    arm.go()  # 実行
+
+    
+
+    arm.set_named_target("home")
+    arm.go()
+
+    target_pose = geometry_msgs.msg.Pose()
+    target_pose.position.x = 0.2
+    target_pose.position.y = -0.23
+    target_pose.position.z = 0.3
+    q = quaternion_from_euler(3.14, 0.0, 0.0)  # 上方から掴みに行く場合
     target_pose.orientation.x = q[0]
     target_pose.orientation.y = q[1]
     target_pose.orientation.z = q[2]
@@ -110,35 +117,15 @@ def main():
 
     # 手動で姿勢を指定するには以下のように指定
 
-    target_pose = geometry_msgs.msg.Pose()
-    target_pose.position.x = 0.07
-    target_pose.position.y = -0.03
-    target_pose.position.z = 0.07
-    q = quaternion_from_euler(0.0, 0.0, 3.14/4.0)  # 上方から掴みに行く場合
-    target_pose.orientation.x = q[0]
-    target_pose.orientation.y = q[1]
-    target_pose.orientation.z = q[2]
-    target_pose.orientation.w = q[3]
-    arm.set_pose_target(target_pose)  # 目標ポーズ設定
-    arm.go()  # 実行
-    
-    target_pose = geometry_msgs.msg.Pose()
-    target_pose.position.x = 0.2
-    target_pose.position.y = -0.2
-    target_pose.position.z = 0.2
-    q = quaternion_from_euler( 0.0, 0.0, 0.0 ) #(ai,aj,ak)=(roll,pitch,yaw)
-    target_pose.orientation.x = q[0]
-    target_pose.orientation.y = q[1]
-    target_pose.orientation.z = q[2]
-    target_pose.orientation.w = q[3]
-    arm.set_pose_target( target_pose )	# 目標ポーズ設定
-    arm.go()							# 実行
+    						# 実行
     
 
 
     print("vertical")
     arm.set_named_target("vertical")
     arm.go()
+
+ 				# 実行
 
     """
     target_pose = geometry_msgs.msg.Pose() #arm angle
