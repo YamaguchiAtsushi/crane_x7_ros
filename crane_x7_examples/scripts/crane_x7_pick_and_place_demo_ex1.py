@@ -32,14 +32,14 @@ def main():
     print(arm_initial_pose)
 
     # 何かを掴んでいた時のためにハンドを開く
-    gripper.set_joint_value_target([0.9, 0.9])
-    gripper.go()
+    #gripper.set_joint_value_target([0.9, 0.9])
+    #gripper.go()
 
     # SRDFに定義されている"home"の姿勢にする
     arm.set_named_target("home")
     arm.go()
-    gripper.set_joint_value_target([0.7, 0.7])
-    gripper.go()
+    #gripper.set_joint_value_target([0.7, 0.7])
+    #gripper.go()
 
     # 掴む準備をする
     target_pose = geometry_msgs.msg.Pose()
@@ -55,8 +55,8 @@ def main():
     arm.go()  # 実行
 
     # ハンドを開く
-    gripper.set_joint_value_target([0.7, 0.7])
-    gripper.go()
+    #gripper.set_joint_value_target([0.7, 0.7])
+    #gripper.go()
 
     # 掴みに行く
     target_pose = geometry_msgs.msg.Pose()
