@@ -25,5 +25,10 @@
   <exec_depend>crane_x7_moveit_config</exec_depend>
   <exec_depend>crane_x7_control</exec_depend>
   <exec_depend>crane_x7_description</exec_depend>
-
+  <exec_depend>gazebo_ros</exec_depend>
+  
+  <export>
+    <gazebo_ros gazebo_media_path="${prefix}/worlds" />
+    <gazebo_ros gazebo_model_path="${prefix}/models" /> 
+  </export>
 </package>

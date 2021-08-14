@@ -26,6 +26,14 @@
       <pose>0.20 0 1.0 0 0 0</pose>
     </model>
 
+    <!-- https://qiita.com/srs/items/ac242e46177c2b797a7b -->
+    <model name="baton">
+      <include>
+    	<uri>model://baton</uri>
+      </include>
+      <pose> 0.20 0 1.06 0 0 0</pose>
+    </model>
+
     <model name="ground_plane">
       <include>
         <uri>model://ground_plane</uri>
